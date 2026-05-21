@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Brandon Shumack — GRC & Cybersecurity</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#F7F5F0;
+  --white:#FFFFFF;
+  --navy:#142035;
+  --navy2:#1C2F4A;
+  --blue:#2256A0;
+  --blue2:#3A6FC4;
+  --gold:#B8912A;
+  --gold2:#D4AA45;
+  --text:#1A1A1A;
+  --mid:#4A5568;
+  --muted:#8896A8;
+  --border:#E2DDD5;
+  --border2:#D0C9BE;
+}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 60px;height:68px;
+  background:rgba(247,245,240,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:600;color:var(--navy);
+  letter-spacing:0.02em;
+}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:13px;font-weight:500;color:var(--mid);
+  text-decoration:none;letter-spacing:0.04em;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--navy);}
+.nav-cta{
+  padding:8px 20px;background:var(--navy);color:#fff !important;
+  border-radius:4px;font-size:13px !important;font-weight:500 !important;
+  transition:background 0.2s !important;
+}
+.nav-cta:hover{background:var(--blue) !important;color:#fff !important;}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 60px 80px;
+  max-width:1160px;margin:0 auto;
+  position:relative;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:28px;
+  animation:fadeUp 0.7s ease both;
+}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--gold);}
+.hero-eyebrow span{
+  font-size:11px;font-weight:600;letter-spacing:0.2em;
+  color:var(--gold);text-transform:uppercase;
+}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,7vw,96px);
+  font-weight:700;line-height:0.95;
+  color:var(--navy);margin-bottom:10px;
+  animation:fadeUp 0.7s 0.1s ease both;
+}
+h1 em{font-style:italic;color:var(--blue);}
+.hero-title-line{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.5vw,26px);
+  font-weight:400;color:var(--mid);
+  margin-bottom:36px;
+  animation:fadeUp 0.7s 0.2s ease both;
+}
+.hero-desc{
+  font-size:16px;font-weight:300;color:var(--mid);
+  max-width:560px;line-height:1.75;margin-bottom:48px;
+  animation:fadeUp 0.7s 0.3s ease both;
+}
+.hero-actions{
+  display:flex;gap:14px;flex-wrap:wrap;
+  animation:fadeUp 0.7s 0.4s ease both;
+}
+.btn{
+  padding:13px 30px;font-size:13px;font-weight:600;
+  letter-spacing:0.05em;border-radius:4px;
+  cursor:pointer;text-decoration:none;transition:all 0.2s;
+  border:none;font-family:'DM Sans',sans-serif;
+}
+.btn-navy{background:var(--navy);color:#fff;}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy2);}
+.btn-outline:hover{background:var(--navy);color:#fff;}
+.hero-stats{
+  display:flex;gap:48px;margin-top:64px;padding-top:40px;
+  border-top:1px solid var(--border);
+  animation:fadeUp 0.7s 0.5s ease both;
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;font-weight:700;color:var(--navy);line-height:1;
+}
+.stat-num span{font-size:22px;color:var(--gold);}
+.stat-label{font-size:12px;color:var(--muted);font-weight:500;margin-top:4px;letter-spacing:0.05em;}
+
+/* ── SECTION CHROME ── */
+section{padding:96px 60px;max-width:1160px;margin:0 auto;}
+.full-bleed{max-width:100%;padding-left:0;padding-right:0;}
+.section-tag{
+  font-size:11px;font-weight:600;letter-spacing:0.2em;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.section-tag::before{content:'';width:24px;height:1px;background:var(--gold);}
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,48px);font-weight:700;
+  color:var(--navy);margin-bottom:56px;line-height:1.1;
+}
+.divider{height:1px;background:var(--border);max-width:1160px;margin:0 auto;}
+
+/* ── ABOUT ── */
+#about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-text p{font-size:15px;line-height:1.85;color:var(--mid);margin-bottom:18px;}
+.about-text p strong{color:var(--navy);font-weight:600;}
+.about-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+.badge{
+  font-size:11px;font-weight:600;letter-spacing:0.1em;
+  padding:5px 13px;border-radius:3px;
+  border:1px solid var(--border2);color:var(--navy2);
+  background:var(--white);text-transform:uppercase;
+}
+.about-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:12px;padding:36px;
+  box-shadow:0 4px 24px rgba(20,32,53,0.06);
+}
+.about-card-row{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--border);
+}
+.about-card-row:last-child{border-bottom:none;padding-bottom:0;}
+.about-card-row:first-child{padding-top:0;}
+.card-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--cream);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.card-label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;}
+.card-value{font-size:14px;font-weight:500;color:var(--navy);}
+.card-sub{font-size:12px;color:var(--muted);margin-top:1px;}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--white);}
+#experience section{padding:96px 60px;}
+.exp-grid{display:grid;grid-template-columns:200px 1fr;gap:0;}
+.exp-timeline{
+  position:relative;padding-right:48px;
+  border-right:1px solid var(--border);
+}
+.exp-timeline-item{
+  position:relative;padding:0 0 48px 0;cursor:pointer;
+}
+.exp-timeline-item::after{
+  content:'';position:absolute;
+  right:-5px;top:5px;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--border2);border:2px solid var(--cream);
+  transition:background 0.2s,box-shadow 0.2s;
+}
+.exp-timeline-item.active::after{
+  background:var(--gold);
+  box-shadow:0 0 0 4px rgba(184,145,42,0.15);
+}
+.exp-period{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0.05em;margin-bottom:4px;}
+.exp-co{font-size:13px;font-weight:600;color:var(--navy);transition:color 0.2s;}
+.exp-timeline-item.active .exp-co{color:var(--gold);}
+.exp-panel{padding-left:48px;display:none;}
+.exp-panel.active{display:block;animation:fadeIn 0.3s ease;}
+.exp-panel-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:700;color:var(--navy);margin-bottom:4px;
+}
+.exp-panel-meta{font-size:13px;color:var(--blue);font-weight:500;margin-bottom:24px;}
+.exp-panel-desc{font-size:14px;line-height:1.8;color:var(--mid);margin-bottom:20px;}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.exp-bullets li{
+  font-size:14px;color:var(--mid);line-height:1.6;
+  padding-left:20px;position:relative;
+}
+.exp-bullets li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:6px;height:1px;background:var(--gold);
+}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px;}
+.exp-tag{
+  font-size:11px;padding:4px 10px;border-radius:3px;
+  background:var(--cream);border:1px solid var(--border);
+  color:var(--navy2);font-weight:500;
+}
+
+/* ── EDUCATION ── */
+.edu-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.edu-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px;padding:32px;
+  transition:box-shadow 0.2s,transform 0.2s;
+  position:relative;overflow:hidden;
+}
+.edu-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+}
+.edu-card:hover{box-shadow:0 8px 32px rgba(20,32,53,0.1);transform:translateY(-2px);}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.edu-school{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:12px;}
+.edu-period{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:10px;}
+.edu-note{font-size:12px;color:var(--mid);line-height:1.5;}
+.edu-honors{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:600;color:var(--gold);
+  background:rgba(184,145,42,0.08);border:1px solid rgba(184,145,42,0.2);
+  padding:3px 10px;border-radius:3px;margin-top:12px;
+}
+
+/* ── SKILLS ── */
+#skills{background:var(--navy);}
+#skills section{padding:96px 60px;}
+#skills .section-tag{color:var(--gold2);}
+#skills h2{color:var(--white);}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.05);}
+.skill-group{
+  background:rgba(20,32,53,0.6);
+  padding:28px 24px;
+  transition:background 0.2s;
+}
+.skill-group:hover{background:rgba(30,47,74,0.8);}
+.skill-group-label{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;
+  color:var(--gold2);text-transform:uppercase;margin-bottom:16px;
+}
+.skill-items{display:flex;flex-direction:column;gap:8px;}
+.skill-item{
+  font-size:13px;color:rgba(255,255,255,0.75);
+  padding-left:14px;position:relative;line-height:1.4;
+}
+.skill-item::before{
+  content:'';position:absolute;left:0;top:7px;
+  width:5px;height:1px;background:var(--gold2);
+}
+
+/* ── HONORS ── */
+.honors-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.honor-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:8px;padding:20px 24px;
+  display:flex;align-items:flex-start;gap:16px;
+  transition:box-shadow 0.2s;
+}
+.honor-card:hover{box-shadow:0 4px 16px rgba(20,32,53,0.08);}
+.honor-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.honor-name{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:3px;}
+.honor-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* ── FITMENT CHECKER ── */
+#fitment{background:var(--white);}
+#fitment section{padding:96px 60px;}
+.fitment-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:48px;align-items:start;
+}
+.fitment-left p{font-size:15px;color:var(--mid);line-height:1.75;margin-bottom:24px;}
+.fitment-textarea{
+  width:100%;min-height:180px;
+  border:1.5px solid var(--border2);border-radius:8px;
+  padding:16px;font-family:'DM Sans',sans-serif;
+  font-size:14px;color:var(--text);background:var(--cream);
+  resize:vertical;outline:none;transition:border-color 0.2s;
+  line-height:1.6;
+}
+.fitment-textarea:focus{border-color:var(--blue);}
+.fitment-textarea::placeholder{color:var(--muted);}
+.fitment-btn{
+  margin-top:12px;padding:13px 32px;
+  background:var(--navy);color:#fff;border:none;
+  border-radius:4px;font-size:13px;font-weight:600;
+  letter-spacing:0.05em;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background 0.2s;
+  width:100%;
+}
+.fitment-btn:hover:not(:disabled){background:var(--blue);}
+.fitment-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.fitment-result{display:none;animation:fadeIn 0.4s ease;}
+.fitment-result.show{display:block;}
+.score-display{
+  display:flex;align-items:center;gap:24px;
+  background:var(--cream);border:1px solid var(--border);
+  border-radius:10px;padding:24px;margin-bottom:24px;
+}
+.score-ring{
+  width:88px;height:88px;border-radius:50%;
+  border:3px solid var(--gold);flex-shrink:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:var(--white);
+}
+.score-pct{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--navy);line-height:1;}
+.score-lbl{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:0.15em;margin-top:2px;}
+.score-verdict{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.score-sub{font-size:13px;color:var(--mid);}
+.result-section h4{
+  font-size:10px;font-weight:700;letter-spacing:0.15em;
+  color:var(--gold);text-transform:uppercase;margin:20px 0 10px;
+}
+.result-section ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.result-section li{
+  font-size:13px;color:var(--mid);padding-left:16px;
+  position:relative;line-height:1.55;
+}
+.result-section li::before{
+  content:'';position:absolute;left:0;top:8px;
+  width:6px;height:1px;background:var(--gold);
+}
+.result-rec{
+  font-size:14px;color:var(--mid);line-height:1.7;
+  background:var(--cream);border-left:3px solid var(--gold);
+  padding:14px 16px;border-radius:0 6px 6px 0;
+  margin-top:8px;
+}
+
+/* ── CHAT ── */
+#chat-fab{
+  position:fixed;bottom:28px;right:28px;z-index:300;
+  width:58px;height:58px;border-radius:50%;
+  background:var(--navy);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+  box-shadow:0 4px 20px rgba(20,32,53,0.3);
+  transition:transform 0.2s,background 0.2s;
+}
+#chat-fab:hover{transform:scale(1.08);background:var(--blue);}
+#chat-box{
+  position:fixed;bottom:100px;right:28px;z-index:300;
+  width:360px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:14px;
+  display:flex;flex-direction:column;
+  box-shadow:0 20px 60px rgba(20,32,53,0.15);
+  transform:translateY(12px) scale(0.97);
+  opacity:0;pointer-events:none;
+  transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  overflow:hidden;max-height:540px;
+}
+#chat-box.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all;}
+.chat-header{
+  padding:16px 20px;
+  background:var(--navy);
+  display:flex;align-items:center;gap:12px;
+}
+.chat-avatar{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;
+}
+.chat-hname{font-size:14px;font-weight:600;color:#fff;}
+.chat-hstatus{font-size:11px;color:rgba(255,255,255,0.5);}
+.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:18px;padding:0;}
+.chat-close:hover{color:#fff;}
+#chat-msgs{
+  flex:1;overflow-y:auto;padding:16px;
+  display:flex;flex-direction:column;gap:10px;min-height:0;
+}
+#chat-msgs::-webkit-scrollbar{width:3px;}
+#chat-msgs::-webkit-scrollbar-thumb{background:var(--border2);}
+.msg{max-width:88%;padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.55;animation:fadeIn 0.2s ease;}
+.msg.bot{background:var(--cream);color:var(--text);align-self:flex-start;border-bottom-left-radius:2px;}
+.msg.user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:2px;}
+.chat-input-row{
+  display:flex;gap:8px;padding:12px;
+  border-top:1px solid var(--border);
+}
+#chat-in{
+  flex:1;border:1.5px solid var(--border);border-radius:6px;
+  padding:9px 12px;font-family:'DM Sans',sans-serif;
+  font-size:13px;color:var(--text);outline:none;
+  background:var(--cream);transition:border-color 0.2s;
+}
+#chat-in:focus{border-color:var(--navy);}
+#chat-in::placeholder{color:var(--muted);}
+#chat-send{
+  background:var(--navy);color:#fff;border:none;
+  border-radius:6px;padding:9px 16px;
+  font-size:13px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background 0.2s;
+}
+#chat-send:hover{background:var(--blue);}
+
+/* ── CONTACT ── */
+#contact-wrap{background:var(--navy);}
+#contact-wrap section{padding:96px 60px;max-width:1160px;margin:0 auto;background:transparent;}
+#contact-wrap .section-tag{color:var(--gold2);}
+#contact-wrap h2{color:var(--white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.contact-left p{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:28px;}
+.resume-dl-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;background:var(--gold);color:var(--navy);
+  border-radius:4px;font-size:13px;font-weight:700;
+  letter-spacing:0.05em;text-decoration:none;
+  transition:background 0.2s,transform 0.2s;border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+}
+.resume-dl-btn:hover{background:var(--gold2);transform:translateY(-1px);}
+.contact-form{display:flex;flex-direction:column;gap:14px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-field{display:flex;flex-direction:column;gap:6px;}
+.form-field label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;}
+.form-field input,.form-field textarea,.form-field select{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:6px;padding:11px 14px;
+  color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;
+  outline:none;transition:border-color 0.2s;
+}
+.form-field input:focus,.form-field textarea:focus{border-color:var(--gold);}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,0.25);}
+.form-field textarea{min-height:120px;resize:vertical;line-height:1.55;}
+.form-submit{
+  padding:13px 32px;background:var(--gold);color:var(--navy);
+  border:none;border-radius:4px;font-size:13px;font-weight:700;
+  letter-spacing:0.05em;cursor:pointer;font-family:'DM Sans',sans-serif;
+  transition:background 0.2s;align-self:flex-start;
+}
+.form-submit:hover{background:var(--gold2);}
+.form-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.form-success{
+  display:none;padding:16px 20px;
+  background:rgba(46,125,50,0.2);border:1px solid rgba(46,125,50,0.4);
+  border-radius:6px;color:#81C784;font-size:14px;
+}
+.form-success.show{display:block;}
+
+footer{
+  padding:48px 60px;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  max-width:1160px;margin:0 auto;
+}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);}
+.footer-right{font-size:12px;color:var(--muted);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  section{padding:64px 24px;}
+  #about{grid-template-columns:1fr;}
+  .exp-grid{grid-template-columns:1fr;}
+  .exp-timeline{border-right:none;border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:32px;}
+  .exp-panel{padding-left:0;}
+  .edu-cards,.honors-grid,.skills-grid,.fitment-wrap{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:8px;text-align:center;}
+  #hero{padding:100px 24px 60px;}
+  .hero-stats{flex-wrap:wrap;gap:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Brandon Shumack</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience-wrap">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills-wrap">Skills</a></li>
+    <li><a href="#honors">Honors</a></li>
+    <li><a href="#fitment" class="nav-cta">Recruiter Check</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">
+    <div class="hero-eyebrow-line"></div>
+    <span>GRC &amp; Cybersecurity Professional</span>
+  </div>
+  <h1>Brandon<br/><em>Shumack.</em></h1>
+  <p class="hero-title-line">U.S. Navy Veteran &nbsp;·&nbsp; MICS Candidate, UC Berkeley &nbsp;·&nbsp; Ottawa, ON</p>
+  <p class="hero-desc">
+    Four years securing DoD networks. A master's in cybersecurity from Berkeley. A record of leading teams under pressure and keeping systems compliant. Now bringing all of it to GRC.
+  </p>
+  <div class="hero-actions">
+    <a href="#fitment" class="btn btn-navy">Run Recruiter Fitment Check</a>
+    <button class="btn btn-outline" onclick="openChat()">Ask Me Anything</button>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">2,000<span>+</span></div>
+      <div class="stat-label">End Users Supported</div>
+    </div>
+    <div>
+      <div class="stat-num">99.8<span>%</span></div>
+      <div class="stat-label">Network Uptime Maintained</div>
+    </div>
+    <div>
+      <div class="stat-num">800<span>+</span></div>
+      <div class="stat-label">Systems Hardened</div>
+    </div>
+    <div>
+      <div class="stat-num">25</div>
+      <div class="stat-label">Personnel Led</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text">
+    <div class="section-tag">About</div>
+    <h2>Security-first.<br/>Mission-proven.</h2>
+    <p>I'm a cybersecurity and IT professional whose career began in the U.S. Navy, where I spent four years managing mission-critical DoD information systems in high-stakes, zero-tolerance environments.</p>
+    <p>My focus now is <strong>Governance, Risk &amp; Compliance</strong> — the discipline of turning technical security expertise into organizational policy, measurable risk reduction, and audit-ready operations. I bring a rare combination of hands-on technical depth and the structured, documentation-first mindset that GRC demands.</p>
+    <p>I completed my B.S. in Information Technology <strong>Magna Cum Laude</strong> and am currently in the Master of Information and Cybersecurity (MICS) program at <strong>UC Berkeley</strong>, concentrating in policy-driven governance and cloud security architecture.</p>
+    <div class="about-badges">
+      <span class="badge">COMSEC</span>
+      <span class="badge">RMF</span>
+      <span class="badge">DISA STIGs</span>
+      <span class="badge">NIST CSF</span>
+      <span class="badge">ISO 27001</span>
+      <span class="badge">Incident Response</span>
+    </div>
+  </div>
+  <div>
+    <div class="about-card">
+      <div class="about-card-row">
+        <div class="card-icon">🎓</div>
+        <div>
+          <div class="card-label">Current</div>
+          <div class="card-value">MICS — UC Berkeley</div>
+          <div class="card-sub">Master of Information &amp; Cybersecurity</div>
+        </div>
+      </div>
+      <div class="about-card-row">
+        <div class="card-icon">⚓</div>
+        <div>
+          <div class="card-label">Military</div>
+          <div class="card-value">U.S. Navy — IS Technician</div>
+          <div class="card-sub">Jan 2019 – Jan 2023 · Honorable Discharge</div>
+        </div>
+      </div>
+      <div class="about-card-row">
+        <div class="card-icon">📍</div>
+        <div>
+          <div class="card-label">Location</div>
+          <div class="card-value">Ottawa, Ontario, Canada</div>
+          <div class="card-sub">Open to remote &amp; hybrid roles</div>
+        </div>
+      </div>
+      <div class="about-card-row">
+        <div class="card-icon">🎯</div>
+        <div>
+          <div class="card-label">Target Role</div>
+          <div class="card-value">GRC Analyst / Compliance</div>
+          <div class="card-sub">Government, defence, enterprise</div>
+        </div>
+      </div>
+      <div class="about-card-row">
+        <div class="card-icon">🔗</div>
+        <div>
+          <div class="card-label">LinkedIn</div>
+          <div class="card-value" style="font-size:12px;">brandon-shumack-092217239</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<div id="experience-wrap" style="background:var(--white);">
+<section id="experience" style="padding:96px 60px;max-width:1160px;margin:0 auto;">
+  <div class="section-tag">Experience</div>
+  <h2>Career Timeline</h2>
+  <div class="exp-grid">
+    <div class="exp-timeline">
+      <div class="exp-timeline-item active" onclick="showExp(0)" id="exp-tab-0">
+        <div class="exp-period">2023 – Present</div>
+        <div class="exp-co">Education &amp; Dev</div>
+      </div>
+      <div class="exp-timeline-item" onclick="showExp(1)" id="exp-tab-1">
+        <div class="exp-period">2019 – 2023</div>
+        <div class="exp-co">U.S. Navy</div>
+      </div>
+      <div class="exp-timeline-item" onclick="showExp(2)" id="exp-tab-2">
+        <div class="exp-period">2017 – 2018</div>
+        <div class="exp-co">Food Lion</div>
+      </div>
+    </div>
+    <div>
+      <div class="exp-panel active" id="exp-panel-0">
+        <div class="exp-panel-title">Career Break — Education &amp; Professional Development</div>
+        <div class="exp-panel-meta">Self-Directed · Ottawa, Ontario · Jan 2023 – Present</div>
+        <ul class="exp-bullets">
+          <li>Completed B.S. in Information Technology (Magna Cum Laude) at UMass Lowell and enrolled in the MICS program at UC Berkeley, specializing in GRC, cloud security, and risk management.</li>
+          <li>MICS coursework concentrated in policy-driven governance, GRC program design, cloud security architecture, risk management frameworks (NIST CSF, ISO 27001), and advanced threat detection.</li>
+          <li>Inducted into Alpha Sigma Lambda national honor society — top 20% of chapter, GPA 3.2+, 24+ graded semester hours.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">NIST CSF</span><span class="exp-tag">ISO 27001</span><span class="exp-tag">GRC</span><span class="exp-tag">Cloud Security</span><span class="exp-tag">UC Berkeley</span></div>
+      </div>
+      <div class="exp-panel" id="exp-panel-1">
+        <div class="exp-panel-title">Information Systems Technician</div>
+        <div class="exp-panel-meta">U.S. Navy · San Diego, CA · Full-Time, Active Duty · Jan 2019 – Jan 2023 · Honorable Discharge</div>
+        <ul class="exp-bullets">
+          <li>Administered and secured enterprise networks supporting <strong>2,000+ end users</strong> across classified and unclassified DoD environments at <strong>99.8% uptime</strong>.</li>
+          <li>Installed, hardened, and maintained <strong>800+ endpoints</strong> in compliance with DISA STIG baselines and DoD configuration management standards.</li>
+          <li>Managed COMSEC materials and cryptographic key lifecycle per DoD directives — zero-deficiency audit record across all classified crypto asset transactions.</li>
+          <li>Contributed to IT security policy development and RMF compliance documentation, supporting control assessments and audit-readiness activities.</li>
+          <li>Configured firewalls, IDS/IPS, VLANs, and network segmentation across LAN/WAN infrastructure (TCP/IP, DHCP, DNS).</li>
+          <li>Enforced least-privilege access control via Active Directory with MFA/PKI; managed full user lifecycle to minimize insider risk.</li>
+          <li>Led and mentored a 25-person IT team; designed training programs and maintained performance under demanding operational conditions.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">RMF</span><span class="exp-tag">DISA STIGs</span><span class="exp-tag">COMSEC</span><span class="exp-tag">Active Directory</span><span class="exp-tag">IDS/IPS</span><span class="exp-tag">SIEM</span><span class="exp-tag">Team Leadership</span></div>
+      </div>
+      <div class="exp-panel" id="exp-panel-2">
+        <div class="exp-panel-title">Grocery Stocker</div>
+        <div class="exp-panel-meta">Food Lion · Lewisville, NC · Part-Time · Sep 2017 – Oct 2018</div>
+        <ul class="exp-bullets">
+          <li>Maintained inventory accuracy, product presentation, and safety compliance in a high-volume retail environment.</li>
+          <li>Departed voluntarily in good standing to pursue a career in the U.S. Navy.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Inventory Management</span><span class="exp-tag">Safety Compliance</span><span class="exp-tag">Team Collaboration</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-tag">Education</div>
+  <h2>Academic Background</h2>
+  <div class="edu-cards">
+    <div class="edu-card">
+      <div class="edu-degree">Master of Information &amp; Cybersecurity</div>
+      <div class="edu-school">UC Berkeley School of Information</div>
+      <div class="edu-period">Aug 2025 – May 2027 &nbsp;·&nbsp; In Progress</div>
+      <div class="edu-note">Concentration: Secure Infrastructure · Cloud Security Architecture · Policy-Driven Governance · Advanced Threat Detection</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">B.S., Information Technology</div>
+      <div class="edu-school">University of Massachusetts Lowell</div>
+      <div class="edu-period">Apr 2023 – Aug 2025</div>
+      <div class="edu-note">Alpha Sigma Lambda National Honor Society</div>
+      <div class="edu-honors">🏅 Magna Cum Laude</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div id="skills-wrap" style="background:var(--navy);">
+<section id="skills" style="padding:96px 60px;max-width:1160px;margin:0 auto;background:transparent;">
+  <div class="section-tag">Skills</div>
+  <h2>Core Competencies</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-label">GRC &amp; Risk</div>
+      <div class="skill-items">
+        <div class="skill-item">Risk Assessment &amp; Management</div>
+        <div class="skill-item">Policy Development &amp; Enforcement</div>
+        <div class="skill-item">RMF (Risk Management Framework)</div>
+        <div class="skill-item">NIST CSF &amp; ISO 27001</div>
+        <div class="skill-item">Audit Documentation</div>
+        <div class="skill-item">Regulatory Compliance</div>
+        <div class="skill-item">Incident Reporting</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Cybersecurity Operations</div>
+      <div class="skill-items">
+        <div class="skill-item">Network Defense &amp; Firewalls</div>
+        <div class="skill-item">IDS/IPS Systems</div>
+        <div class="skill-item">COMSEC &amp; Cryptographic Key Mgmt</div>
+        <div class="skill-item">Incident Response &amp; SIEM Workflows</div>
+        <div class="skill-item">Vulnerability Management</div>
+        <div class="skill-item">Endpoint Security / EDR</div>
+        <div class="skill-item">DISA STIG Hardening</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Identity &amp; Access</div>
+      <div class="skill-items">
+        <div class="skill-item">Active Directory</div>
+        <div class="skill-item">Least-Privilege Enforcement</div>
+        <div class="skill-item">MFA / PKI Frameworks</div>
+        <div class="skill-item">User Lifecycle Management</div>
+        <div class="skill-item">Access Control Policy</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Systems &amp; Infrastructure</div>
+      <div class="skill-items">
+        <div class="skill-item">Windows Server &amp; Linux</div>
+        <div class="skill-item">LAN/WAN · TCP/IP · DHCP · DNS · VLANs</div>
+        <div class="skill-item">Network Administration</div>
+        <div class="skill-item">Configuration &amp; Patch Management</div>
+        <div class="skill-item">STIG-Compliant Hardening</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Scripting &amp; Tooling</div>
+      <div class="skill-items">
+        <div class="skill-item">Bash Scripting</div>
+        <div class="skill-item">PowerShell</div>
+        <div class="skill-item">Systems Monitoring</div>
+        <div class="skill-item">Compliance Automation</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Leadership</div>
+      <div class="skill-items">
+        <div class="skill-item">Team Leadership — 25 Personnel</div>
+        <div class="skill-item">Mentorship &amp; Training Programs</div>
+        <div class="skill-item">Technical Communication</div>
+        <div class="skill-item">Cross-Functional Collaboration</div>
+        <div class="skill-item">High-Pressure Operations</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- HONORS -->
+<section id="honors">
+  <div class="section-tag">Recognition</div>
+  <h2>Military Honors &amp; Awards</h2>
+  <div class="honors-grid">
+    <div class="honor-card"><div class="honor-icon">🎖️</div><div><div class="honor-name">Good Conduct Medal</div><div class="honor-desc">Three consecutive years of honorable and faithful service — zero disciplinary infractions, NJPs, or court-martial offenses.</div></div></div>
+    <div class="honor-card"><div class="honor-icon">🌍</div><div><div class="honor-name">Global War on Terrorism Expeditionary Medal</div><div class="honor-desc">Awarded for overseas deployment in direct service to the Global War on Terrorism.</div></div></div>
+    <div class="honor-card"><div class="honor-icon">🛡️</div><div><div class="honor-name">Global War on Terrorism Service Medal</div><div class="honor-desc">Recognized for support of counter-terrorism operations in the War on Terror.</div></div></div>
+    <div class="honor-card"><div class="honor-icon">🤝</div><div><div class="honor-name">Humanitarian Service Medal</div><div class="honor-desc">Awarded for meritorious participation in a significant military humanitarian operation.</div></div></div>
+    <div class="honor-card"><div class="honor-icon">⚓</div><div><div class="honor-name">Sea Service Deployment Ribbon</div><div class="honor-desc">Recognized for military duty performed while forward-deployed aboard a U.S. Navy vessel at sea.</div></div></div>
+    <div class="honor-card"><div class="honor-icon">🎯</div><div><div class="honor-name">Navy Expert Rifle &amp; Pistol Medals</div><div class="honor-desc">Highest weapons qualification awards in the U.S. Navy — Expert-level status on the M16/M4 and M9.</div></div></div>
+    <div class="honor-card"><div class="honor-icon">🦅</div><div><div class="honor-name">National Defense Service Medal</div><div class="honor-desc">Awarded for active military service during a designated period of national emergency.</div></div></div>
+    <div class="honor-card"><div class="honor-icon">📚</div><div><div class="honor-name">Alpha Sigma Lambda Honor Society</div><div class="honor-desc">National honor society recognizing academic excellence — top 20% of chapter, GPA 3.2+.</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RECRUITER FITMENT CHECK -->
+<div id="fitment" style="background:var(--white);">
+<section style="padding:96px 60px;max-width:1160px;margin:0 auto;">
+  <div class="section-tag">For Recruiters</div>
+  <h2>Instant Fitment Check</h2>
+  <div class="fitment-wrap">
+    <div class="fitment-left">
+      <p>Paste any job description below and get an instant AI-powered analysis of how well Brandon's background aligns with the role — including a match score, key strengths, any gaps, and a hiring recommendation.</p>
+      <textarea class="fitment-textarea" id="jd-input" placeholder="Paste a job description here (e.g. from LinkedIn, Indeed, company careers page)…"></textarea>
+      <button class="fitment-btn" id="fit-btn" onclick="runFitment()">Analyze Fitment →</button>
+    </div>
+    <div class="fitment-left">
+      <div class="fitment-result" id="fit-result">
+        <div class="score-display">
+          <div class="score-ring" id="score-ring">
+            <div class="score-pct" id="score-pct">—</div>
+            <div class="score-lbl">MATCH</div>
+          </div>
+          <div>
+            <div class="score-verdict" id="score-verdict"></div>
+            <div class="score-sub" id="score-sub"></div>
+          </div>
+        </div>
+        <div class="result-section" id="result-strengths"></div>
+        <div class="result-section" id="result-gaps"></div>
+        <div class="result-section" id="result-rec"></div>
+      </div>
+      <div id="fit-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;min-height:280px;border:1.5px dashed var(--border2);border-radius:10px;">
+        <div style="text-align:center;color:var(--muted);">
+          <div style="font-size:32px;margin-bottom:10px;">📋</div>
+          <div style="font-size:13px;">Fitment analysis will appear here</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div id="contact-wrap">
+<section id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2>Let's Connect</h2>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <p>Whether you're a recruiter with a role in mind, a hiring manager curious about fit, or someone who wants to discuss GRC and cybersecurity — Brandon would love to hear from you.</p>
+      <p style="margin-bottom:20px;">You can also download a copy of his full resume directly:</p>
+      <a href="Brandon_Shumack_Resume_Final.docx" download class="resume-dl-btn">
+        ⬇ Download Resume (DOCX)
+      </a>
+      <p style="margin-top:24px;font-size:13px;color:rgba(255,255,255,0.4);">
+        📍 Ottawa, Ontario, Canada<br/>
+        🔗 linkedin.com/in/brandon-shumack-092217239
+      </p>
+    </div>
+    <div>
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitContact(event)">
+        <input type="hidden" name="form-name" value="contact"/>
+        <p style="display:none;"><input name="bot-field"/></p>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Jane Smith" required/>
+          </div>
+          <div class="form-field">
+            <label>Your Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="jane@company.com" required/>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Subject</label>
+          <input type="text" id="cf-subject" name="subject" placeholder="e.g. GRC Analyst opportunity at Acme Corp"/>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea id="cf-message" name="message" placeholder="Tell Brandon about the opportunity or question you have…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="cf-submit">Send Message</button>
+        <div class="form-success" id="cf-success">
+          ✓ Message sent! Brandon will get back to you shortly.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Brandon Shumack</div>
+  <div class="footer-right">GRC &amp; Cybersecurity · Ottawa, ON · linkedin.com/in/brandon-shumack-092217239</div>
+</footer>
+
+<!-- CHAT FAB -->
+<button id="chat-fab" onclick="toggleChat()" title="Ask about Brandon">💬</button>
+
+<!-- CHAT BOX -->
+<div id="chat-box">
+  <div class="chat-header">
+    <div class="chat-avatar">🛡️</div>
+    <div>
+      <div class="chat-hname">Ask About Brandon</div>
+      <div class="chat-hstatus">AI-powered · Knows his full background</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-msgs">
+    <div class="msg bot">Hi! I'm Brandon's AI assistant. Ask me anything about his experience, skills, GRC background, or fit for your team.</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-in" placeholder="Ask a question…" onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button id="chat-send" onclick="sendChat()">Send</button>
+  </div>
+</div>
+
+
+
+<script>
+// ── API call via Netlify backend function ────────────────────────────
+async function callClaude(payload) {
+  const r = await fetch('/.netlify/edge-functions/claude', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err?.error?.message || 'API error');
+  }
+  return r.json();
+}
+
+// ── Experience tabs ──────────────────────────────────────────────────
+function showExp(i) {
+  document.querySelectorAll('.exp-timeline-item').forEach((t,idx) => t.classList.toggle('active', idx === i));
+  document.querySelectorAll('.exp-panel').forEach((p,idx) => p.classList.toggle('active', idx === i));
+}
+
+// ── Chat ─────────────────────────────────────────────────────────────
+const BRANDON = `You are a professional AI assistant representing Brandon Shumack's portfolio. Answer questions about Brandon concisely and professionally. Speak in third person.
+
+PROFILE:
+Name: Brandon Shumack | Location: Ottawa, Ontario, Canada
+Target: GRC (Governance, Risk & Compliance) roles — government, defence, enterprise
+LinkedIn: linkedin.com/in/brandon-shumack-092217239
+
+SUMMARY: Cybersecurity and IT professional with 4+ years of active-duty DoD experience. Administered and secured networks supporting 2,000+ end users at 99.8% uptime. Led 25-person IT team. Managed COMSEC and cryptographic systems with zero-deficiency audit record. Hardened 800+ endpoints to DISA STIG standards. Currently pursuing MICS at UC Berkeley.
+
+EXPERIENCE:
+• Career Break / Education (Jan 2023–Present): B.S. IT, UMass Lowell (Magna Cum Laude); MICS at UC Berkeley (in progress); Alpha Sigma Lambda honor society
+• Information Systems Technician, U.S. Navy, San Diego (Jan 2019–Jan 2023, Honorable Discharge): DoD network admin, COMSEC management, RMF compliance, DISA STIGs, IDS/IPS, Active Directory, incident response, SIEM, led 25 personnel, 800+ endpoints, 2000+ users, 99.8% uptime
+• Stocker, Food Lion (Sep 2017–Oct 2018)
+
+EDUCATION:
+• MICS — UC Berkeley School of Information (Aug 2025–May 2027, in progress) — Secure Infrastructure, Cloud Security Architecture, Policy-Driven Governance
+• B.S. Information Technology — UMass Lowell (Apr 2023–Aug 2025) — Magna Cum Laude, Alpha Sigma Lambda
+
+SKILLS: RMF, NIST CSF, ISO 27001, DISA STIGs, COMSEC, Cryptography, Incident Response, SIEM, IDS/IPS, Firewalls, Vulnerability Management, Active Directory, MFA/PKI, Windows Server, Linux, LAN/WAN, VLANs, TCP/IP, Bash, PowerShell, Team Leadership
+
+MILITARY HONORS: Good Conduct Medal, GWOT Expeditionary Medal, GWOT Service Medal, Humanitarian Service Medal, Sea Service Deployment Ribbon, Navy Expert Rifle Medal, Navy Expert Pistol Medal, National Defense Service Medal`;
+
+let chatHistory = [];
+let chatOpen = false;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chat-box').classList.toggle('open', chatOpen);
+}
+function openChat() {
+  chatOpen = true;
+  document.getElementById('chat-box').classList.add('open');
+}
+
+async function sendChat() {
+  const inp = document.getElementById('chat-in');
+  const msg = inp.value.trim();
+  if (!msg) return;
+  inp.value = '';
+  addMsg(msg, 'user');
+  chatHistory.push({ role: 'user', content: msg });
+  const typing = addMsg('Typing…', 'bot');
+  typing.style.opacity = '0.5';
+  try {
+    const d = await callClaude({ model: 'claude-sonnet-4-5', max_tokens: 600, system: BRANDON, messages: chatHistory });
+    const reply = d.content?.[0]?.text || 'Sorry, I had trouble with that.';
+    typing.remove();
+    addMsg(reply, 'bot');
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    typing.remove();
+    addMsg('Connection error — please try again.', 'bot');
+  }
+}
+
+function addMsg(text, type) {
+  const c = document.getElementById('chat-msgs');
+  const d = document.createElement('div');
+  d.className = `msg ${type}`;
+  d.textContent = text;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+  return d;
+}
+
+// ── Fitment ──────────────────────────────────────────────────────────
+async function runFitment() {
+  const jd = document.getElementById('jd-input').value.trim();
+  if (!jd) { alert('Please paste a job description first.'); return; }
+  const btn = document.getElementById('fit-btn');
+  btn.disabled = true; btn.textContent = 'Analyzing…';
+
+  const prompt = `You are a senior talent advisor. Analyze how well Brandon Shumack fits this job description. Respond ONLY in valid JSON, no markdown:
+{"score":integer 0-100,"verdict":"5-8 word summary","sub":"one line on overall fit","strengths":["strength 1","strength 2","strength 3"],"gaps":["gap 1","gap 2"],"recommendation":"2-3 sentences on fit and how to position Brandon"}
+
+BRANDON'S PROFILE:
+${BRANDON}
+
+JOB DESCRIPTION:
+${jd}`;
+
+  try {
+    const d = await callClaude({ model: 'claude-sonnet-4-5', max_tokens: 800, messages: [{ role: 'user', content: prompt }] });
+    let raw = d.content?.[0]?.text || '{}';
+    raw = raw.replace(/```json|```/g, '').trim();
+    const res = JSON.parse(raw);
+    renderFitment(res);
+  } catch(e) {
+    alert('Error running analysis: ' + (e.message || 'unknown error') + '. Please try again.');
+  }
+  btn.disabled = false; btn.textContent = 'Analyze Fitment →';
+}
+
+function renderFitment(res) {
+  document.getElementById('fit-placeholder').style.display = 'none';
+  const score = res.score || 0;
+  const color = score >= 75 ? '#2E7D32' : score >= 50 ? '#B8912A' : '#C62828';
+  document.getElementById('score-pct').textContent = score + '%';
+  document.getElementById('score-pct').style.color = color;
+  document.getElementById('score-ring').style.borderColor = color;
+  document.getElementById('score-verdict').textContent = res.verdict || '';
+  document.getElementById('score-sub').textContent = res.sub || '';
+  const sEl = document.getElementById('result-strengths');
+  sEl.innerHTML = `<h4>✓ Matching Strengths</h4><ul>${(res.strengths||[]).map(s=>`<li>${s}</li>`).join('')}</ul>`;
+  const gEl = document.getElementById('result-gaps');
+  gEl.innerHTML = res.gaps?.length ? `<h4>△ Gaps to Address</h4><ul>${res.gaps.map(g=>`<li>${g}</li>`).join('')}</ul>` : '';
+  const rEl = document.getElementById('result-rec');
+  rEl.innerHTML = res.recommendation ? `<h4>💡 Recommendation</h4><div class="result-rec">${res.recommendation}</div>` : '';
+  document.getElementById('fit-result').classList.add('show');
+}
+
+// ── Contact form ─────────────────────────────────────────────────────
+function submitContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cf-submit');
+  const form = e.target;
+  btn.disabled = true; btn.textContent = 'Sending…';
+
+  const encoded = new URLSearchParams();
+  encoded.append('form-name', 'contact');
+  encoded.append('name', document.getElementById('cf-name').value);
+  encoded.append('email', document.getElementById('cf-email').value);
+  encoded.append('subject', document.getElementById('cf-subject').value);
+  encoded.append('message', document.getElementById('cf-message').value);
+
+  fetch('/index.html', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encoded.toString()
+  })
+    .then(() => {
+      document.getElementById('cf-success').classList.add('show');
+      btn.textContent = 'Sent!';
+      form.reset();
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong — please email brandonlshumack7@gmail.com directly.');
+    });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+[[edge_functions]]
+  path = "/.netlify/edge-functions/claude"
+  function = "claude"
